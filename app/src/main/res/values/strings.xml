@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="e_posta">E-posta</string>
+    <string-array name="airports">
+        <item>İstanbul Havalimanı</item>
+        <item>Sabiha Gökçen Havalimanı</item>
+        <item>Adnan Menderes Havalimanı</item>
+        <item>Ankara Esenboğa Havalimanı</item>
+        <item>Antalya Havalimanı</item>
+        <item>Balıkesir Koca Seyit Havalimanı</item>
+        <item>Bursa Yenişehir Havalimanı</item>
+        <item>Çanakkale Havalimanı</item>
+        <item>Denizli Çardak Havalimanı</item>
+        <item>Diyarbakır Havalimanı</item>
+        <item>Dalaman Havalimanı</item>
+        <item>Elazığ Havalimanı</item>
+        <item>Erzurum Havalimanı</item>
+        <item>Hasan Polatkan Havalimanı</item>
+        <item>Gaziantep Havalimanı</item>
+        <item>Hatay Havalimanı</item>
+        <item>Sinop Havalimanı</item>
+        <item>Trabzon Havalimanı</item>
+        <item>Uşak Havalimanı</item>
+        <item>Zonguldak Havalimanı</item>
+
+        …
+    </string-array>
+</resources>
+
