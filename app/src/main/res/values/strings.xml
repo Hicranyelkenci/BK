@@ -22,8 +22,11 @@
         <item>Trabzon Havalimanı</item>
         <item>Uşak Havalimanı</item>
         <item>Zonguldak Havalimanı</item>
-
-        …
+    </string-array>
+    <string-array name="sefersaat">
+        <item>09:00</item>
+        <item>12:00</item>
+        <item>15:00</item>
     </string-array>
 </resources>
 

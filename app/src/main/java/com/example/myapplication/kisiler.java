@@ -2,7 +2,7 @@ package com.example.myapplication;
 
 public class kisiler {
     int id;
-    String ad,soyad,eposta,sifre,tel;
+    String ad,soyad,eposta,sifre,sifreT,tel;
     public void setId(int id){
         this.id=id;
     }
@@ -32,6 +32,12 @@ public class kisiler {
     }
     public String getSifre(){
         return this.sifre;
+    }
+    public void setSifreT(String sifreT){
+        this.sifreT=sifreT;
+    }
+    public String getSifreT(){
+        return this.sifreT;
     }
     public void setTel(String tel){
         this.tel=tel;

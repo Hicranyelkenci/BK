@@ -28,8 +28,7 @@ public class user extends AppCompatActivity {
     Button butonHome;
     ImageButton butonUser;
     Button butonyeniuye;
-    public FirebaseAuth mAuth;
-    public StorageReference mStorageRef;
+    Database Database;
     public  static final Pattern PASSWORD_PATTERN = Pattern.compile("^"+
             "(?=.*[0-9])"+
             "(?=.*[a-z])"+
@@ -46,6 +45,7 @@ public class user extends AppCompatActivity {
         girisyap = findViewById(R.id.girisyap);
         eposta = findViewById(R.id.eposta);
         sifre = findViewById(R.id.sifre);
+        Database = new Database(user.this);
 
 
         butonyeniuye = findViewById(R.id.yeniuye);
@@ -81,12 +81,15 @@ public class user extends AppCompatActivity {
         girisyap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String emailAddr = eposta.getText().toString();
-                String pass = sifre.getText().toString();
+
                 validateEposta();
                 validatePassword();
+                String mail = eposta.getText().toString();
+                String password = sifre.getText().toString();
 
-                if(validatePassword()==true) {
+                if (validatePassword()==true && validateEposta()==true)
+                {
+
                     Intent intentGiris = new Intent(user.this, MainActivity.class);
                     startActivity(intentGiris);
                 }

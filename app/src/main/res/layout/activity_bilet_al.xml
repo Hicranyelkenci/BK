@@ -163,6 +163,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Uçuş ara" />
+        <Button
+            android:id="@+id/butonSeferEkle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sefer Ekle" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

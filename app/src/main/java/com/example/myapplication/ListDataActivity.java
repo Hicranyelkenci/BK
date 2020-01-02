@@ -2,7 +2,9 @@ package com.example.myapplication;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.contentcapture.DataRemovalRequest;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -10,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListDataActivity extends AppCompatActivity {
     Database Database;
@@ -20,24 +23,18 @@ public class ListDataActivity extends AppCompatActivity {
         setContentView(R.layout.list_layout);
         mListView = findViewById(R.id.listView);
         Database = new Database(this);
-        populateListView();
+        Listele();
 
     }
-
-    public void populateListView() {
-        Cursor data = Database.getData();
-        ArrayList<String> listData = new ArrayList<>();
-        while (data.moveToNext()){
-            listData.add(data.getString(1) + "  " +
-                    data.getString(2) + "  " +
-                    data.getString(3) + "  " +
-                    data.getString(4) + "  " +
-                    data.getString(5) + "  " +
-                    data.getString(6));
-        }
-        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
+    public void Listele(){
+        Database Database = new Database(ListDataActivity.this);
+        List<String> list = Database.kisiListele();
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(ListDataActivity.this,
+                android.R.layout.simple_list_item_1,android.R.id.text1,list);
         mListView.setAdapter(adapter);
     }
+
+
 
 
 }

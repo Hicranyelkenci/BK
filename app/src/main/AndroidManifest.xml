@@ -13,9 +13,12 @@
         android:roundIcon="@drawable/app"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".seferler"></activity>
+        <activity android:name=".biletGoster"></activity>
+        <activity android:name=".yerSec" />
+        <activity android:name=".seferEkle" />
+        <activity android:name=".seferler" />
         <activity android:name=".yeniUye" />
-        <activity android:name=".ListDataActivity"/>
+        <activity android:name=".ListDataActivity" />
         <activity android:name=".bilgi" />
         <activity android:name=".rezervasyonlar" />
         <activity android:name=".biletlerim" />
@@ -28,7 +31,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

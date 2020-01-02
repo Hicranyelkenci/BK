@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -94,11 +95,12 @@ public class yeniUye extends AppCompatActivity {
                     String epost =eposta.getText().toString();
                     String sifr = sifre.getText().toString();
                     String sifrtekrar = sifreTekrar.getText().toString();
-                    String tell = editTel.getText().toString();validateEposta();
+                    String tell = editTel.getText().toString();
                     Database = new Database(yeniUye.this);
                     Database.addData(ad,soyad,epost,sifr,sifrtekrar,tell);
                     Intent intentList = new Intent(yeniUye.this, ListDataActivity.class);
                     startActivity(intentList);
+
                 }
 
                 validatePassword();
@@ -110,8 +112,6 @@ public class yeniUye extends AppCompatActivity {
 
             }
         });
-
-
 
     }
     private boolean validateEposta() {

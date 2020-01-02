@@ -5,6 +5,7 @@ import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Array;
+import java.sql.SQLRecoverableException;
 import java.text.DateFormat;
 import java.util.Calendar;
 
@@ -36,6 +38,7 @@ public class biletAl extends AppCompatActivity{
     RadioButton radioTekyon;
     Button tarihGidis;
     Button tarihDonus;
+    Button butonSeferEkle;
     TextView textGidis;
     TextView textDonus;
     DatePickerDialog datePickerDialog;
@@ -43,6 +46,7 @@ public class biletAl extends AppCompatActivity{
     Spinner donus;
     Button butonUcusara;
     RadioButton gidisdonus;
+    Database Database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,10 +54,12 @@ public class biletAl extends AppCompatActivity{
         butonHome = findViewById(R.id.bkturizm);
         tarihGidis = findViewById(R.id.tarihGidis);
         textGidis = findViewById(R.id.textGidis);
+        textDonus = findViewById(R.id.textDonus);
         gidisdonus = findViewById(R.id.gidisdonus);
         radioGroup = findViewById(R.id.radiogroup);
         tarihDonus = findViewById(R.id.tarihDonus);
         butonUcusara = findViewById(R.id.butonUcusara);
+        butonSeferEkle = findViewById(R.id.butonSeferEkle);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 
             @Override
@@ -73,9 +79,7 @@ public class biletAl extends AppCompatActivity{
         });
 
         gidis =  findViewById(R.id.kalkıs);
-        //gidis.getSelectedItem().toString();
         donus = findViewById(R.id.varıs);
-        //donus.getSelectedItem().toString();
 
         String[] kalkısNoktası = getResources().getStringArray(R.array.airports);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, kalkısNoktası);
@@ -102,6 +106,7 @@ public class biletAl extends AppCompatActivity{
                                 textGidis.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                             }
                         }, mYear, mMonth, mDay);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
                 datePickerDialog.show();
 
             }
@@ -122,6 +127,7 @@ public class biletAl extends AppCompatActivity{
                                 textDonus.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                             }
                         }, mYear, mMonth, mDay);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis()-1000);
                 datePickerDialog.show();
             }
         });
@@ -145,7 +151,31 @@ public class biletAl extends AppCompatActivity{
         butonUcusara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent gecisSefer = new Intent(biletAl.this,seferler.class);
+
+                String nereden = gidis.getSelectedItem().toString();
+                String nereye = donus.getSelectedItem().toString();
+                String tarih = textGidis.getText().toString();
+                String tarih2 = textDonus.getText().toString();
+                if (nereden.equals(nereye)){
+                    Toast.makeText(biletAl.this, "Varış Noktası Kalkış Noktasıyla aynı olamaz..", Toast.LENGTH_SHORT).show();
+                }
+                else if (tarih.isEmpty()){
+                    Toast.makeText(biletAl.this, "Tarih boş olamaz..", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Intent gecisSefer = new Intent(biletAl.this,seferler.class);
+                    gecisSefer.putExtra("nereden",nereden);
+                    gecisSefer.putExtra("nereye",nereye);
+                    gecisSefer.putExtra("tarih",tarih);
+                    startActivity(gecisSefer);
+                }
+            }
+        });
+        butonSeferEkle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent gecisSefer = new Intent(biletAl.this,seferEkle.class);
                 startActivity(gecisSefer);
             }
         });
